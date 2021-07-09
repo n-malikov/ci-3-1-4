@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Welcome to CodeIgniter!</h1>
 
 	<div id="body">
-		<a href="/vinni/">ВИННИ ПУХ</a>
+		<a href="/ajax_pagination">ВИННИ ПУХ</a>
 
 		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
 
