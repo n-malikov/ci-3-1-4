@@ -3,6 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ajax_pagination extends CI_Controller {
 
+	//private $ajax_pagination_model;
+
+
 	function index()
 	{
 		$this->load->helper('url'); // чтоб base_url() работал
@@ -29,6 +32,8 @@ class Ajax_pagination extends CI_Controller {
 		$config["next_tag_open"] = '<li>';
 		$config["next_tag_close"] = '</li>';
 		$config["prev_link"] = "&lt;";
+		$config["last_link"] = "Последняя";
+		$config["first_link"] = "Первая";
 		$config["prev_tag_open"] = "<li>";
 		$config["prev_tag_close"] = "</li>";
 		$config["cur_tag_open"] = "<li class='active'><a href='#'>";
@@ -42,7 +47,7 @@ class Ajax_pagination extends CI_Controller {
 
 		$output = array(
 			'pagination_link'  => $this->pagination->create_links(),
-			'country_table'   => $this->ajax_pagination_model->fetch_details($config["per_page"], $start)
+			'country_table'   => $this->ajax_pagination_model->fetch_details($config["per_page"], $start),
 		);
 		echo json_encode($output);
 	}
