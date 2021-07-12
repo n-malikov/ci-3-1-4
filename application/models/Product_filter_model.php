@@ -11,7 +11,7 @@ class Product_filter_model extends CI_Model
 		return $this->db->get();
 	}
 
-	function make_query($minimum_price, $maximum_price, $brand, $ram, $storage)
+	function make_query($minimum_price, $maximum_price, $brand, $ram, $filters)
 	{
 		$query = "
   SELECT * FROM product 
@@ -41,26 +41,25 @@ class Product_filter_model extends CI_Model
    ";
 		}
 
-		if(isset($storage))
+		//поиск по памяти
+		if(!empty($filters['storage']))
 		{
-			$storage_filter = implode("','", $storage);
-			$query .= "
-    AND product_storage IN('".$storage_filter."')
-   ";
+			$query .= " AND product_storage = '" . $filters['storage'] . "' ";
 		}
+
 		return $query;
 	}
 
-	function count_all($minimum_price, $maximum_price, $brand, $ram, $storage)
+	function count_all($minimum_price, $maximum_price, $brand, $ram, $filters)
 	{
-		$query = $this->make_query($minimum_price, $maximum_price, $brand, $ram, $storage);
+		$query = $this->make_query($minimum_price, $maximum_price, $brand, $ram, $filters);
 		$data = $this->db->query($query);
 		return $data->num_rows();
 	}
 
-	function fetch_data($limit, $start, $minimum_price, $maximum_price, $brand, $ram, $storage)
+	function fetch_data($limit, $start, $minimum_price, $maximum_price, $brand, $ram, $filters)
 	{
-		$query = $this->make_query($minimum_price, $maximum_price, $brand, $ram, $storage);
+		$query = $this->make_query($minimum_price, $maximum_price, $brand, $ram, $filters);
 
 		$query .= ' LIMIT '.$start.', ' . $limit;
 

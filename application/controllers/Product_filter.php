@@ -22,15 +22,17 @@ class Product_filter extends CI_Controller {
 	function fetch_data()
 	{
 		sleep(1);
+		$filters = $this->input->post('filters');
+
 		$minimum_price = $this->input->post('minimum_price');
 		$maximum_price = $this->input->post('maximum_price');
 		$brand = $this->input->post('brand');
 		$ram = $this->input->post('ram');
-		$storage = $this->input->post('storage');
 		$this->load->library('pagination');
+
 		$config = array();
 		$config['base_url'] = '#';
-		$config['total_rows'] = $this->product_filter_model->count_all($minimum_price, $maximum_price, $brand, $ram, $storage);
+		$config['total_rows'] = $this->product_filter_model->count_all($minimum_price, $maximum_price, $brand, $ram, $filters);
 		$config['per_page'] = 8;
 		$config['uri_segment'] = 3;
 		$config['use_page_numbers'] = TRUE;
@@ -54,9 +56,17 @@ class Product_filter extends CI_Controller {
 		$this->pagination->initialize($config);
 		$page = $this->uri->segment(3);
 		$start = ($page - 1) * $config['per_page'];
+
+//		$pyatak = [
+//			'vinni' => 'винни',
+//			'puh' => 'пух',
+//		];
+
+
 		$output = array(
 			'pagination_link'  => $this->pagination->create_links(),
-			'product_list'   => $this->product_filter_model->fetch_data($config["per_page"], $start, $minimum_price, $maximum_price, $brand, $ram, $storage)
+			'product_list'   => $this->product_filter_model->fetch_data($config["per_page"], $start, $minimum_price, $maximum_price, $brand, $ram, $filters),
+			'pyatak' => $filters
 
 			//'product_list'   => 'vinni'
 		);
