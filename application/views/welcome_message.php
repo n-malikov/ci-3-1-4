@@ -73,6 +73,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div id="body">
 		<a href="/ajax_pagination">ВИННИ ПУХ</a>
 
+		<br><br>
+
+		<a href="/product_filter">ПАГИНАЦИЯ С ФИЛЬТРАМИ</a>
+
 		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
 
 		<p>If you would like to edit this page you'll find it located at:</p>
