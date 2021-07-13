@@ -30,20 +30,6 @@
 			</div>
 
 			<div class="list-group">
-				<h3>Оперативка</h3>
-				<?php
-				foreach ($ram_data->result_array() as $row) {
-					?>
-					<div class="list-group-item checkbox">
-						<label><input type="checkbox" class="common_selector ram"
-									  value="<?php echo $row['product_ram']; ?>"> <?php echo $row['product_ram']; ?> GB</label>
-					</div>
-					<?php
-				}
-				?>
-			</div>
-
-			<div class="list-group">
 				<h3>Бренд</h3>
 				<?php
 				foreach ($brand_data->result_array() as $row) {
@@ -60,7 +46,7 @@
 
 		</div>
 
-		<div class="col-md-9">
+		<ul class="col-md-9">
 
 			<br><br><br><br>
 
@@ -88,6 +74,34 @@
 				}
 				?>
 
+			</ul>
+
+			<br>
+			<h4>Оперативка</h4>
+
+			<ul class="nav nav-tabs">
+				<?php
+				foreach ($ram_data->result_array() as $row) {
+					?>
+
+					<li>
+						<a class="filterOnClick"
+						   data-filter-name="ram"
+						   data-filter-value="<?=$row['product_ram']?>"
+						   data-toggle="tab"
+						   role="button"><?=$row['product_ram']?> GB</a>
+					</li>
+
+
+					<?php
+					/*
+					 * <div class="list-group-item checkbox">
+						<label><input type="checkbox" class="common_selector ram"
+									  value="<?php echo $row['product_ram']; ?>"> <?php echo $row['product_ram']; ?> GB</label>
+					</div>
+					 */
+				}
+				?>
 			</ul>
 
 
