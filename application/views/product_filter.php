@@ -17,6 +17,31 @@
 
 <div class="container">
 	<div class="row">
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link active" data-toggle="tab" href="#description">Описание</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#characteristics">Характеристики</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#opinion">Отзывы</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane fade show active" id="description">
+				Описание товара...
+			</div>
+			<div class="tab-pane fade" id="characteristics">
+				Характеристики товара...
+			</div>
+			<div class="tab-pane fade" id="opinion">
+				Отзывы...
+			</div>
+		</div>
+
+
+
 		<div class="col-md-3">
 			<br/>
 			<br/>
@@ -46,7 +71,7 @@
 
 		</div>
 
-		<ul class="col-md-9">
+		<div class="col-md-9">
 
 			<br><br><br><br>
 
