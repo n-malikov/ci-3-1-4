@@ -17,6 +17,31 @@
 
 <div class="container">
 	<div class="row">
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link active" data-toggle="tab" href="#description">Описание</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#characteristics">Характеристики</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#opinion">Отзывы</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane fade show active" id="description">
+				Описание товара...
+			</div>
+			<div class="tab-pane fade" id="characteristics">
+				Характеристики товара...
+			</div>
+			<div class="tab-pane fade" id="opinion">
+				Отзывы...
+			</div>
+		</div>
+
+
+
 		<div class="col-md-3">
 			<br/>
 			<br/>
@@ -27,20 +52,6 @@
 				<input type="hidden" id="hidden_maximum_price" value="65000"/>
 				<p id="price_show">1000 - 65000</p>
 				<div id="price_range"></div>
-			</div>
-
-			<div class="list-group">
-				<h3>Оперативка</h3>
-				<?php
-				foreach ($ram_data->result_array() as $row) {
-					?>
-					<div class="list-group-item checkbox">
-						<label><input type="checkbox" class="common_selector ram"
-									  value="<?php echo $row['product_ram']; ?>"> <?php echo $row['product_ram']; ?> GB</label>
-					</div>
-					<?php
-				}
-				?>
 			</div>
 
 			<div class="list-group">
@@ -88,6 +99,34 @@
 				}
 				?>
 
+			</ul>
+
+			<br>
+			<h4>Оперативка</h4>
+
+			<ul class="nav nav-tabs">
+				<?php
+				foreach ($ram_data->result_array() as $row) {
+					?>
+
+					<li>
+						<a class="filterOnClick"
+						   data-filter-name="ram"
+						   data-filter-value="<?=$row['product_ram']?>"
+						   data-toggle="tab"
+						   role="button"><?=$row['product_ram']?> GB</a>
+					</li>
+
+
+					<?php
+					/*
+					 * <div class="list-group-item checkbox">
+						<label><input type="checkbox" class="common_selector ram"
+									  value="<?php echo $row['product_ram']; ?>"> <?php echo $row['product_ram']; ?> GB</label>
+					</div>
+					 */
+				}
+				?>
 			</ul>
 
 
